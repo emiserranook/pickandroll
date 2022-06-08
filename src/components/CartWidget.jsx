@@ -1,12 +1,11 @@
 import React from 'react'
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function CartWidget({items}) {
   return (
-    <>
-    <i className='carrito'><ion-icon name="cart-outline"></ion-icon>
+      <>
+    <ShoppingCartIcon />
     <span>{items}</span>
-    </i>
     </>  
   )
 }
