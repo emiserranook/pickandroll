@@ -4,7 +4,7 @@ import ItemList from './ItemList'
 const ItemListContainer = ({greeting}) => {
   const [loading, setLoading] = useState(true);
   const [error,setError] = useState(false);
-  const [resultado, setResultado] = useState([]):
+  const [resultado, setResultado] = useState([]);
 
 
   useEffect(() => {
@@ -34,15 +34,12 @@ const ItemListContainer = ({greeting}) => {
     })
     .finally(() => {
       setLoading(false);
-    }):
+    });
 
   }, []);
 
-  console.log(productos)
+  console.log(resultado)
   
-
-
-
   return (
   <>
   <div>{loading && "loading..."}</div>
