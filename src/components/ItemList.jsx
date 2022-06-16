@@ -1,17 +1,14 @@
 import React from 'react'
 import Item from './Item'
 
-const ItemList = ({resultado}) =>{
-  return (
-    <div>
-      {resultado && resultado.map((Item) => (
+export default function ItemList({resultado}){
+  return(
     <>
-    <p>id:{item.id}</p>
-    <p>title:{item.title}</p>
-    <p>description:{item.description}</p>
-    <p>precio:{item.precio}</p>
+    <div style ={{display: "flex", flexWrap:"wrap"}}>
+    {resultado && resultado?.map((item) => (
+      <Item product={Item}/>
+    ))}
+    </div>
     </>
-  ))}
-   </div>
-
-export default ItemList
+  )
+}

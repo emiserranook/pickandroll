@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import ItemDetail from './ItemDetail';
 
 function ItemDetailContainer() {
@@ -11,7 +11,7 @@ useEffect(() => {
     const proms = new Promise((res,rej) => {
         setTimeout(()=>{
             res(productosMock[id - 1]);
-        }2000);
+        },2000);
         
     });
     
@@ -22,11 +22,14 @@ useEffect(() => {
     })
 }, [id]);
 
-  return (
-    <div>
-        <ItemDetail productDetail = {productDetail} />
-    </div>
-  );
+  return(
+    <>
+      <div>
+    {productDetail && productDetail?.map((item) => (
+    <ItemDetail productosMock={ItemDetail}/>
+  ))};
+  </div>
+  </>
+  )
 }
-
-export default ItemDetailContainer
+export default ItemDetailContainer;

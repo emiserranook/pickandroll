@@ -13,8 +13,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
 
-const pages = ['Home', 'Productos', 'Contacto'];
+const pages = [<Link to="/">home</Link>, <Link to="/productos">Productos</Link>, <Link to="/contacto">Contacto</Link>];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {
