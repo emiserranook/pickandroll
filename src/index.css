@@ -1,5 +1,5 @@
 body {
-  background-image: url(./image/cancha1.jpg);
+  background-image: url(/public/image/cancha1.jpg);
   background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;

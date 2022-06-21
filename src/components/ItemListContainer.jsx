@@ -15,10 +15,10 @@ const ItemListContainer = () => {
     const producto = new Promise((res,rej) => {
       setTimeout(() => {
         res([
-          {id:"1",title:"camiseta dallas",description:"talle M",precio:"2500",image:"/src/image/remera lebron.jpg"},
-          {id:"2",title:"camiseta golden state",description:"talle L",precio:"2600",image:"/src/image/remera nba.jpg"},
-          {id:"3",title:"camiseta lakers",description:"talle M",precio:"2500",image:"/src/image/herro.jpg"},
-          {id:"4",title:"camiseta lakers",description:"talle L",precio:"2500",image:"/src/image/jokic.jpg"},
+          {id:"1",title:"camiseta dallas",description:"talle M",precio:"2500",image:"/public/image/remera lebron.jpg"},
+          {id:"2",title:"camiseta golden state",description:"talle L",precio:"2600",image:"/public/image/remera nba.jpg"},
+          {id:"3",title:"camiseta lakers",description:"talle M",precio:"2500",image:"/public/image/herro.jpg"},
+          {id:"4",title:"camiseta lakers",description:"talle L",precio:"2500",image:"/public/image/jokic.jpg"},
         ]);
       },2000);
       

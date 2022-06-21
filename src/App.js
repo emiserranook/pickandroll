@@ -6,22 +6,21 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './components/Home';
 import Contacto from './components/Contacto';
+import Item from './components/Item';
+import ItemDetailContainer from './components/ItemDetailContainer';
+import Cart from './components/Cart';
 
 function App() {
-  const [count, setCount] = useState(1)
-  const onAdd = (count) => {
-    alert(`sumaste ${count} productos`);
-  }
-
-  return (
+return (
     <>
     <BrowserRouter>
     <Navbar />
-    <ItemCount inicial={1} max={10} onAdd={onAdd} />
       <Routes>
         <Route path='/' element={<ItemListContainer/>} />
         <Route path='/productos' element={<ItemListContainer/>} />
-        <Route path='/contacto' element={<Contacto/>} />
+        <Route path='/' element={<Contacto/>} />
+        <Route path='/item/:idProd' element={<ItemDetailContainer />}
+        <Route path='/cart' element={ <Cart/> } />
       </Routes>
     </BrowserRouter>
     </>

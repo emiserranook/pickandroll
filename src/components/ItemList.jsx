@@ -5,10 +5,8 @@ export default function ItemList({resultado}){
   return(
     <>
     <div style ={{display: "flex", flexWrap:"wrap"}}>
-    {resultado && resultado?.map((item) => (
-      <Item product={Item}/>
-    ))}
+    {resultado && resultado?.map((Item) => <Item Item={Item}/>)}
     </div>
     </>
-  )
+  );
 }
