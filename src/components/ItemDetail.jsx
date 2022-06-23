@@ -9,20 +9,33 @@ import Typography from '@mui/material/Typography';
 import {useState} from 'react';
 import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 
 export default function ItemDetail({productDetail}) {
-  const{id,title,description,precio,image} = productDetail;
-  const [count, setCount] = useState(0);
+  const{id,title,description,price,image} = productDetail;
+
+  const [count, setCount] = useState(1);
+
+  const [AddedToCart, setAddedToCart] = useState (false);
+
+  const{isInCart, addItem} = useContext(CartContext)
+
 
   function onAdd () {
     alert(`sumaste ${count} productos`);
+    isInCart(productDetail.id)
+    addItem(productDetail.count)
+    setAddedToCart(true);
   }
 
   const removeFromCart = () => {
     removeItem(id);
     setAddedToCart(false);
   }
-
+const removeItem = (id) => {
+  setAddedToCart(true);
+};
   
   return (
     <Card sx={{ width:"310px",margin: 10 }}>
@@ -40,7 +53,7 @@ export default function ItemDetail({productDetail}) {
           description:{description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          precio:{precio}
+          precio:{price}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Id:{id}
@@ -50,7 +63,8 @@ export default function ItemDetail({productDetail}) {
         <Button size="small">ver detalle</Button>
       </CardActions>
       <div>
-        {count > 0 ?<Link to {'/cart'}>terminar mi compra</Link>:<ItemCount inicial={1} max={10} onAdd={onAdd} removeFromCart={ removeFromCart }/>}
+        {count > 0 ?<Link to = {'/cart'}>terminar mi compra</Link>:
+        <ItemCount inicial={1} max={10} onAdd={onAdd} removeFromCart={ removeFromCart }/>}
     </div>
     </Card>
   );

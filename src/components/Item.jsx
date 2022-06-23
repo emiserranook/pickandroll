@@ -8,8 +8,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-export default function Item({Item}) {
-  const {id,title,description,precio,image} = Item;
+export default function Item({item}) {
+  const {id,title,description,price,image} = item;
   return (
     <Card sx={{ width:"310px",margin: 10 }}>
       <CardMedia
@@ -26,14 +26,14 @@ export default function Item({Item}) {
           description:{description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          precio:{precio}
+          precio:{price}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Id:{id}
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to={`Item/${id}`}>
+        <Link to={`item/${id}`}>
         <Button size="small">ver detalle</Button>
         </Link>
       </CardActions>
