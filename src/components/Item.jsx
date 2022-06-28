@@ -14,9 +14,8 @@ export default function Item({item}) {
     <Card sx={{ width:"310px",margin: 10 }}>
       <CardMedia
         component="img"
-        height="140"
+        height="200"
         image={image}
-        alt="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

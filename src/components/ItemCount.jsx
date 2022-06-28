@@ -1,31 +1,64 @@
-import React, { useState } from 'react'
+import { useState } from 'react';
+import { Box, Button, Fab, Typography } from '@mui/material';
 
-const ItemCount = ({inicial, max, onAdd}) => {
-    const [count, setCount] = useState(inicial)
-    
-    const sumar = () => {
-        if (count < max) {
-          setCount(count + 1)
-        } else {
-          alert ("no puedes agregar mas productos")
-      }
+export default function ItemCount({ stock, initial, onAdd }) {
+
+  const [Count, setCount] = useState(initial)
+
+  const addItem = () => {
+    if (Count < stock) {
+      setCount( Number(Count) + 1 );
     }
-    const restar = () => {
-      count > inicial ? setCount(count - 1) : alert ("no puedes quitar mas productos")
+  }
+
+  const removeItem = () => {
+    if (Count > 1) {
+      setCount( Number(Count) - 1 );
     }
-    const reset = () => {
-      setCount(inicial)
-    }
-    
-      return (
-      <div>
-      <h2 className='contador'>{count}</h2>
-      <button onClick={sumar}>+</button>
-      <button onClick={() => { onAdd(count);reset () }}>agregar al carrito</button>
-      <button onClick={reset}>reset</button>
-      <button onClick={restar}>-</button>
-      </div>
-    )
+  }
+
+  return (
+    <>
+      <Box width={190} sx={{ marginX: 'auto' }}>
+        <Box>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: '12px',
+            }}
+          >
+            <Fab
+              disabled={Count === 0}
+              size='small'
+              variant='primary'
+              onClick={removeItem}
+            >
+              -
+            </Fab>
+            <Typography variant="body1" sx={{ userSelect: 'none' }}>
+              {Count}
+            </Typography>
+            <Fab
+              disabled={Count === stock}
+              size='small'
+              variant='primary'
+              onClick={addItem}
+            >
+              +
+            </Fab>
+          </Box>
+          <Button
+            disabled={Count === 0}
+            variant='primary'
+            size='small'
+            onClick={() => onAdd(Count)}
+          >
+            Agregar al carrito
+          </Button>
+        </Box>
+      </Box>
+    </>
+  )
 }
-
-export default ItemCount

@@ -12,22 +12,21 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 
-export default function ItemDetail({productDetail}) {
-  const{id,title,description,price,image} = productDetail;
+export default function ItemDetail({productos}) {
+  const{id,title,description,price,image} = productos;
 
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(true);
 
-  const [AddedToCart, setAddedToCart] = useState (false);
+  const [AddedToCart, setAddedToCart] = useState (1);
 
   const{isInCart, addItem} = useContext(CartContext)
 
 
-  function onAdd () {
-    alert(`sumaste ${count} productos`);
-    isInCart(productDetail.id)
-    addItem(productDetail.count)
-    setAddedToCart(true);
-  }
+  const onAdd = (AddedToCart) => {
+    isInCart(productos.id);
+    addItem(productos, AddedToCart);
+    setCount(false);
+  };
 
   const removeFromCart = () => {
     removeItem(id);
@@ -43,7 +42,6 @@ const removeItem = (id) => {
         component="img"
         height="140"
         image={image}
-        alt="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -59,13 +57,22 @@ const removeItem = (id) => {
           Id:{id}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">ver detalle</Button>
-      </CardActions>
+      {count > 0 ?(
+        <ItemCount id={id} 
+        AddedToCart={AddedToCart} 
+        setAddedToCart={setAddedToCart}
+        onAdd={onAdd}
+        />
+      ) : (
       <div>
-        {count > 0 ?<Link to = {'/cart'}>terminar mi compra</Link>:
-        <ItemCount inicial={1} max={10} onAdd={onAdd} removeFromCart={ removeFromCart }/>}
+        <button type='button'>
+        <Link to = {'/productos'}>seguir comprando</Link>
+        </button>
+        <button type='button'>
+        <Link to = {'/cart'}>Ir al carrito</Link>
+        </button>
     </div>
+      )}
     </Card>
   );
 }

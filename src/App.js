@@ -19,7 +19,7 @@ return (
     <Navbar />
       <Routes>
         <Route path='/' element={<ItemListContainer />} />
-        <Route path='/productos/idCateg' element={<ItemListContainer />} />
+        <Route path='/productos/:idCateg' element={<ItemListContainer />} />s
         <Route path='/' element={<Contacto />} />
         <Route path='/item/:idProd' element={<ItemDetailContainer />} />
         <Route path='/cart' element={ <Cart/> } />
