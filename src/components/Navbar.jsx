@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
 
-const pages = [<Link to="/">home</Link>, <Link to="/productos">Productos</Link>, <Link to="/contacto">Contacto</Link>];
+const pages = [<Link to="/">home</Link>, <Link to="/category/camisetas">Camisetas</Link>, <Link to="/category/remeras">Remeras</Link>];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = () => {

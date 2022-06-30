@@ -10,6 +10,19 @@ import Item from './components/Item';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import MyProvider from './context/CartContext';
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD4m2hQS0uDtryplEgQ4zPjzydRhi7ySbw",
+  authDomain: "pickandroll-e-commerce.firebaseapp.com",
+  projectId: "pickandroll-e-commerce",
+  storageBucket: "pickandroll-e-commerce.appspot.com",
+  messagingSenderId: "78755443103",
+  appId: "1:78755443103:web:2ffa59102be3aebec8cdaa"
+};
+
+// Initialize Firebase
+initializeApp(firebaseConfig);
 
 function App() {
 return (
@@ -19,9 +32,8 @@ return (
     <Navbar />
       <Routes>
         <Route path='/' element={<ItemListContainer />} />
-        <Route path='/productos/:idCateg' element={<ItemListContainer />} />s
-        <Route path='/' element={<Contacto />} />
-        <Route path='/item/:idProd' element={<ItemDetailContainer />} />
+        <Route path='category/:id' element={<ItemListContainer />} />s
+        <Route path='/item/:id' element={<ItemDetailContainer />} />
         <Route path='/cart' element={ <Cart/> } />
       </Routes>
       </MyProvider>

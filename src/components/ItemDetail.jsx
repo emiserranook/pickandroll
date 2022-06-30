@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 
-export default function ItemDetail({productos}) {
-  const{id,title,description,price,image} = productos;
+export default function ItemDetail({producto}) {
+  const{id,title,description,price,image} = producto;
 
   const [count, setCount] = useState(true);
 
@@ -23,8 +23,8 @@ export default function ItemDetail({productos}) {
 
 
   const onAdd = (AddedToCart) => {
-    isInCart(productos.id);
-    addItem(productos, AddedToCart);
+    isInCart(producto.id);
+    addItem(producto, AddedToCart);
     setCount(false);
   };
 

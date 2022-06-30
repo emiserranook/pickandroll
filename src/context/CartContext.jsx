@@ -44,7 +44,7 @@ const getItemQty = () => {
         return cart.reduce((acc, x) =>acc += x.count * x.precio, 0)
     }
 
-    return <Provider value={{cart, isInCart, addItem, deleteItem, emptyCart, getItemPrice}}>{children}</Provider>
+    return <Provider value={{cart, isInCart, addItem, deleteItem, emptyCart, getItemPrice, getItemQty}}>{children}</Provider>
 
 }
 
