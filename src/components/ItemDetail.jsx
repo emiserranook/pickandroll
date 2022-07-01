@@ -12,29 +12,37 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 
-export default function ItemDetail({producto}) {
-  const{id,title,description,price,image} = producto;
+export default function ItemDetail({items}) {
+  const{id,title,description,price,image, stock} = items;
 
-  const [count, setCount] = useState(true);
+  const [count, setCount] = useState(1);
 
-  const [AddedToCart, setAddedToCart] = useState (1);
+  const [cant, setCant] = useState (0);
 
   const{isInCart, addItem} = useContext(CartContext)
 
+const sumar = () => {
+  count < stock ? setCount (count + 1) : alert('no hay suficiente stock')
+}
 
-  const onAdd = (AddedToCart) => {
-    isInCart(producto.id);
-    addItem(producto, AddedToCart);
-    setCount(false);
-  };
+const restar = () =>{
+  count > 1 ? setCount (count - 1) : alert ('la cantidad no puede ser menor que 1')
+}
 
-  const removeFromCart = () => {
-    removeItem(id);
-    setAddedToCart(false);
+const reset = () =>{
+  setCount(1)
+}
+
+const agregar = (count) => {
+  if (count ===1) {
+    alert(`se agrego ${title} al carrito`)
+    } else {
+    alert(`se agrego ${count} ${title} al carrito`)
   }
-const removeItem = (id) => {
-  setAddedToCart(true);
-};
+  setCant (count);
+  addItem(items, count)
+  isInCart(id);
+}
   
   return (
     <Card sx={{ width:"310px",margin: 10 }}>
@@ -57,22 +65,16 @@ const removeItem = (id) => {
           Id:{id}
         </Typography>
       </CardContent>
-      {count > 0 ?(
-        <ItemCount id={id} 
-        AddedToCart={AddedToCart} 
-        setAddedToCart={setAddedToCart}
-        onAdd={onAdd}
-        />
-      ) : (
-      <div>
-        <button type='button'>
-        <Link to = {'/productos'}>seguir comprando</Link>
-        </button>
-        <button type='button'>
-        <Link to = {'/cart'}>Ir al carrito</Link>
-        </button>
-    </div>
-      )}
+     <div>
+              {cant > 0 ? 
+              <>
+                <Link to={'/'}><button type='button'>Seguir comprando</button></Link>
+                <Link to={'/cart'}><button type='button'>Terminar mi compra</button></Link>
+                </>
+                 : 
+                <ItemCount stock={stock} initial={1} onAdd={agregar} sumar={sumar} restar={restar} reset={reset} count={count} />
+                }
+            </div>
     </Card>
   );
 }

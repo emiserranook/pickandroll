@@ -18,3 +18,80 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.checkoutBody {
+  margin: 10% 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.checkoutBody input {
+  padding: 0.2em;
+  margin: 10px;
+  border: 2px solid purple;
+  border-radius: 5px;
+}
+.checkoutBody p {
+  font-size: 0.8em;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.checkoutBody h1 {
+  font-size: 3em;
+  text-align: center;
+  padding-bottom: 15px;
+}
+.sentOrder {
+  margin-bottom: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.orderId {
+  background: black;
+  color: white;
+}
+.botonPrincipal {
+  background-color: lightcoral;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: lightblue;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+}
+.botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #5E376D;
+}
+.botones p {
+  border-radius: 6px;
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  font-size: 22px;
+  display: inline-block;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.cajita {
+margin: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;  
+}

@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
   const [error,setError] = useState(false);
-  const [result, setResult] = useState([]);
+  const [productos, setProductos] = useState([]);
   const {id} = useParams();
 
 
@@ -21,10 +21,11 @@ const ItemListContainer = () => {
 
       getDocs(q)
       .then((snapshot) => {
-        setResult(snapshot.docs.map((doc) =>({...doc.data(), id: doc.id})));
+        setProductos(snapshot.docs.map((doc) =>({...doc.data(), id: doc.id})));
       })
       .catch((error)=>{
-        setError(error);
+        console.log(error);
+        setError(true);
       })
       .finally(()=>{
         setLoading(false);
@@ -32,7 +33,7 @@ const ItemListContainer = () => {
     }else{
       getDocs(itemsCollection)
     .then((snapshot) => {
-      setResult(snapshot.docs.map((doc) =>({...doc.data(), id: doc.id})));
+      setProductos(snapshot.docs.map((doc) =>({...doc.data(), id: doc.id})));
     })
     .catch((error)=>{
       setError(error);
@@ -47,7 +48,7 @@ const ItemListContainer = () => {
   
   return (
   <>
-  <ItemList items={result} />
+  <ItemList productos={productos} />
   </>
   )
 }

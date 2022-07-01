@@ -8,7 +8,7 @@ import {doc, getDoc, getFirestore} from 'firebase/firestore';
 function ItemDetailContainer() {
 const[louding,setLoading] = useState();
 const[error,setError] = useState();
-const[ result, setResult] = useState;
+const[ producto, setProducto] = useState;
 const{ id} = useParams();
 
 useEffect(() => {
@@ -18,10 +18,11 @@ useEffect(() => {
 
   getDoc(productRef)
   .then((snapshot)=>{
-    setResult({...snapshot.data(), id: snapshot.id});
+    setProducto({...snapshot.data(), id: snapshot.id});
   })
   .catch((error)=>{
-    setError(error);
+    console.log(error)
+    setError(true);
   })
   .finally(()=>{
     setLoading(false);
@@ -30,7 +31,7 @@ useEffect(() => {
 
   return(
     <>
-    {result && <ItemDetail producto = {result}/>}
+    {producto && <ItemDetail items = {producto}/>}
   </>
   );
 }

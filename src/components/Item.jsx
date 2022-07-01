@@ -8,8 +8,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-export default function Item({item}) {
-  const {id,title,description,price,stock,image} = item;
+export default function Item({items}) {
+  const {id,title,description,price,stock,image} = items;
   return (
     <Card sx={{ width:"310px",margin: 10 }}>
       <CardMedia

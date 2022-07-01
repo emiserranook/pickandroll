@@ -11,6 +11,7 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import MyProvider from './context/CartContext';
 import { initializeApp } from "firebase/app";
+import Checkout from './components/Checkout';
 
 const firebaseConfig = {
   apiKey: "AIzaSyD4m2hQS0uDtryplEgQ4zPjzydRhi7ySbw",
@@ -35,6 +36,7 @@ return (
         <Route path='category/:id' element={<ItemListContainer />} />s
         <Route path='/item/:id' element={<ItemDetailContainer />} />
         <Route path='/cart' element={ <Cart/> } />
+        <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
       </MyProvider>
     </BrowserRouter>
