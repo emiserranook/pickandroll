@@ -9,26 +9,23 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
 export default function Item({items}) {
-  const {id,title,description,price,stock,image} = items;
+  const {id,title,description,price,stock,pictureUrl} = items;
   return (
     <Card sx={{ width:"310px",margin: 10 }}>
       <CardMedia
         component="img"
         height="300"
-        image={image}
+        src={pictureUrl}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          title:{title}
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          description:{description}
+          descripcion:{description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          precio:{price}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Id:{id}
+          precio:${price}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           stock:{stock}

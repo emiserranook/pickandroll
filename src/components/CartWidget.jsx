@@ -17,18 +17,26 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const {getItemQty} = useContext(CartContext);
+export default function CartWidget() {
 
-export default function CustomizedBadges() {
+  const {getItemQty} = useContext(CartContext);
+
+  const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: `2px solid ${theme.palette.background.paper}`,
+    padding: '0 4px',
+  },
+}));
+
   return (
-    <Link to="/cart">
-      {getItemQty() > 0?
+    <Link to="/cart"><ShoppingCartIcon />
+      {getItemQty() > 0 ? (
     <IconButton aria-label="cart">
         <spam>{getItemQty()}</spam>
     </IconButton>
-    :
-    null
-    }
+    ) : null}
     </Link>
   );
 }

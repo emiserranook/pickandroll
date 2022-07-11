@@ -28,7 +28,7 @@ code {
 .checkoutBody input {
   padding: 0.2em;
   margin: 10px;
-  border: 2px solid purple;
+  border: 2px solid lightblue;
   border-radius: 5px;
 }
 .checkoutBody p {
@@ -53,11 +53,11 @@ code {
   color: white;
 }
 .botonPrincipal {
-  background-color: lightcoral;
+  background-color: lightblue;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
-  color: lightblue;
+  color: black;
   cursor: pointer;
   display: inline-block;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -94,4 +94,12 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;  
+}
+
+.cargando {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

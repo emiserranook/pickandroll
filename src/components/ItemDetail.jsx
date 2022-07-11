@@ -12,8 +12,8 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 
-export default function ItemDetail({items}) {
-  const{id,title,description,price,image, stock} = items;
+export default function ItemDetail({producto}) {
+  const{category_id,title,description,price,stock, pictureUrl} = producto;
 
   const [count, setCount] = useState(1);
 
@@ -40,41 +40,44 @@ const agregar = (count) => {
     alert(`se agrego ${count} ${title} al carrito`)
   }
   setCant (count);
-  addItem(items, count)
-  isInCart(id);
+  addItem(producto, count)
+  isInCart(producto.id);
 }
   
   return (
+    
     <Card sx={{ width:"310px",margin: 10 }}>
       <CardMedia
         component="img"
-        height="140"
-        image={image}
+        height="300"
+        src={pictureUrl}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          title:{title}
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          description:{description}
+          descripcion:{description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          precio:{price}
+          precio:${price}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Id:{id}
+          categoria:{category_id} - stock:{stock}
         </Typography>
       </CardContent>
-     <div>
+      <CardActions>
+     
               {cant > 0 ? 
               <>
-                <Link to={'/'}><button type='button'>Seguir comprando</button></Link>
-                <Link to={'/cart'}><button type='button'>Terminar mi compra</button></Link>
+                <Link to={'/'}> <Button size="small">Seguir comprando</Button></Link>
+                <Link to={'/cart'}><Button size="small">Terminar mi compra</Button></Link>
                 </>
                  : 
                 <ItemCount stock={stock} initial={1} onAdd={agregar} sumar={sumar} restar={restar} reset={reset} count={count} />
                 }
-            </div>
+            
+            </CardActions>
     </Card>
   );
 }

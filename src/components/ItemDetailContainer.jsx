@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
 import {doc, getDoc, getFirestore} from 'firebase/firestore';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
 function ItemDetailContainer() {
-const[louding,setLoading] = useState();
-const[error,setError] = useState();
-const[ producto, setProducto] = useState;
+const[loading,setLoading] = useState(true);
+const[error,setError] = useState(false);
+const[ producto, setProducto] = useState(null);
 const{ id} = useParams();
 
 useEffect(() => {
@@ -18,20 +19,22 @@ useEffect(() => {
 
   getDoc(productRef)
   .then((snapshot)=>{
-    setProducto({...snapshot.data(), id: snapshot.id});
-  })
-  .catch((error)=>{
-    console.log(error)
-    setError(true);
-  })
-  .finally(()=>{
+    setProducto(...snapshot.data());
     setLoading(false);
-  });
+  })
+  .catch(error=>{
+    setError(error)
+    setLoading(false);
+  })
 }, [id]);
+
+if (loading) {
+  return <div className='cargando'> <CircularProgress disableShrink /></div>;
+}
 
   return(
     <>
-    {producto && <ItemDetail items = {producto}/>}
+    {producto && <ItemDetail producto={producto} id={id}/>}
   </>
   );
 }
