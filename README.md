@@ -1,10 +1,8 @@
 PICKANDROLL: e-commerce con React 
 
 Cómo correr este proyecto:
-Este proyecto se encuentra deployeado en Netlify, podés ingresar y verlo en el siguiente link:
 
-
-Si preferís correrlo de manera local, seguí los siguientes pasos:
+como correrlo de manera local, seguí los siguientes pasos:
 
 1- Descargá el proyecto de este repositorio.
 2- Abrí el directorio del proyecto en tu editor de código que prefieras
@@ -17,6 +15,5 @@ Librerias Utilizadas:
 
 Material ui: libreria con componentes para react.En este proyecto se uso en la Navbar, las card de productos y el icono de Cart.
 https://mui.com
-
 
 
